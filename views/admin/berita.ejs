@@ -1,0 +1,59 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <h2>Kelola Berita & Pengumuman</h2>
+  <a href="/admin/berita/buat" class="btn-primary">+ Buat Berita</a>
+</div>
+
+<% if (success && success.length) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Gambar</th>
+          <th>Judul Berita</th>
+          <th>Kategori</th>
+          <th>Status</th>
+          <th>Tanggal</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length === 0) { %>
+        <tr><td colspan="6" class="text-center text-muted">Belum ada berita</td></tr>
+        <% } %>
+        <% data.forEach(b => { %>
+        <tr>
+          <td>
+            <% if (b.gambar) { %>
+              <img src="<%= b.gambar %>" alt="Thumbnail" style="width: 60px; height: 40px; object-fit: cover; border-radius: 4px;">
+            <% } else { %>
+              <div style="width: 60px; height: 40px; background: #eee; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #999;">No Image</div>
+            <% } %>
+          </td>
+          <td style="max-width: 300px;">
+            <div style="font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= b.judul %></div>
+            <small class="text-muted">Slug: <%= b.slug %></small>
+          </td>
+          <td><span class="badge badge-info"><%= b.kategori %></span></td>
+          <td><span class="badge badge-<%= b.status %>"><%= b.status %></span></td>
+          <td><%= new Date(b.created_at).toLocaleDateString('id-ID') %></td>
+          <td>
+            <div class="btn-group">
+              <a href="/admin/berita/<%= b.id %>/edit" class="btn-table">Edit</a>
+              <form method="POST" action="/admin/berita/<%= b.id %>/hapus" style="display:inline" onsubmit="return confirm('Hapus berita ini?')">
+                <button type="submit" class="btn-table btn-danger">Hapus</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

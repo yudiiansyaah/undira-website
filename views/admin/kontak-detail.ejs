@@ -1,0 +1,37 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <a href="/admin/kontak" class="btn-back">&larr; Kembali</a>
+  <h2>Detail Pesan</h2>
+</div>
+
+<div class="detail-grid">
+  <div class="card">
+    <div class="card-header"><h3>Informasi Pengirim</h3></div>
+    <div class="detail-table">
+      <div class="detail-row"><span>Nama</span><strong><%= item.nama %></strong></div>
+      <div class="detail-row"><span>Email</span><strong><a href="mailto:<%= item.email %>"><%= item.email %></a></strong></div>
+      <div class="detail-row"><span>Telepon</span><strong><%= item.telepon || '-' %></strong></div>
+      <div class="detail-row"><span>Subjek</span><strong><%= item.subjek %></strong></div>
+      <div class="detail-row"><span>Tanggal</span><strong><%= new Date(item.created_at).toLocaleString('id-ID') %></strong></div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <h4>Pesan:</h4>
+      <div class="pesan-box"><%= item.pesan %></div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <a href="mailto:<%= item.email %>?subject=Re: <%= item.subjek %>" class="btn-primary-full">Balas via Email</a>
+    </div>
+  </div>
+  <div>
+    <div class="card danger-zone">
+      <h3>Hapus Pesan</h3>
+      <p>Tindakan ini tidak dapat dibatalkan.</p>
+      <form method="POST" action="/admin/kontak/<%= item.id %>/hapus" onsubmit="return confirm('Hapus pesan ini?')">
+        <button type="submit" class="btn-danger-full">Hapus Pesan</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

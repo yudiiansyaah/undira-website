@@ -1,0 +1,63 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <a href="/admin/pendaftaran" class="btn-back">&larr; Kembali</a>
+  <h2>Detail Pendaftaran #PMB-<%= String(item.id).padStart(6,'0') %></h2>
+</div>
+
+<% if (success && success.length) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="detail-grid">
+  <div class="card">
+    <div class="card-header"><h3>Informasi Pendaftar</h3></div>
+    <div class="detail-table">
+      <div class="detail-row"><span>Nama Lengkap</span><strong><%= item.nama %></strong></div>
+      <div class="detail-row"><span>Email</span><strong><%= item.email %></strong></div>
+      <div class="detail-row"><span>Telepon</span><strong><%= item.telepon %></strong></div>
+      <div class="detail-row"><span>Program Studi</span><strong><%= item.program_studi %></strong></div>
+      <div class="detail-row"><span>Jalur Masuk</span><strong><%= item.jalur %></strong></div>
+      <div class="detail-row"><span>Kampus Tujuan</span><strong><%= item.kampus %></strong></div>
+      <div class="detail-row"><span>Tanggal Daftar</span><strong><%= new Date(item.created_at).toLocaleString('id-ID') %></strong></div>
+      <div class="detail-row">
+        <span>Status</span>
+        <strong><span class="badge badge-<%= item.status %>"><%= item.status %></span></strong>
+      </div>
+      <% if (item.catatan) { %>
+      <div class="detail-row"><span>Catatan</span><strong><%= item.catatan %></strong></div>
+      <% } %>
+    </div>
+  </div>
+
+  <div>
+    <div class="card" style="margin-bottom:1rem">
+      <div class="card-header"><h3>Update Status</h3></div>
+      <form method="POST" action="/admin/pendaftaran/<%= item.id %>/status" class="form-compact">
+        <div class="form-group">
+          <label>Status</label>
+          <select name="status" required>
+            <option value="pending" <%= item.status === 'pending' ? 'selected' : '' %>>Pending</option>
+            <option value="diproses" <%= item.status === 'diproses' ? 'selected' : '' %>>Diproses</option>
+            <option value="diterima" <%= item.status === 'diterima' ? 'selected' : '' %>>Diterima</option>
+            <option value="ditolak" <%= item.status === 'ditolak' ? 'selected' : '' %>>Ditolak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Catatan (opsional)</label>
+          <textarea name="catatan" rows="3" placeholder="Catatan untuk pendaftar..."><%= item.catatan || '' %></textarea>
+        </div>
+        <button type="submit" class="btn-primary-full">Simpan &amp; Kirim Email</button>
+      </form>
+    </div>
+
+    <div class="card danger-zone">
+      <h3>Hapus Data</h3>
+      <p>Tindakan ini tidak dapat dibatalkan.</p>
+      <form method="POST" action="/admin/pendaftaran/<%= item.id %>/hapus" onsubmit="return confirm('Yakin hapus data ini?')">
+        <button type="submit" class="btn-danger-full">Hapus Pendaftaran</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

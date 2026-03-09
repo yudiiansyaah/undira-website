@@ -1,0 +1,92 @@
+<%- include('partials/header') %>
+
+<div class="page-hero" style="--fak-color: <%= fak.warna %>">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / <a href="/fakultas">Fakultas</a> / <%= fak.nama %></div>
+    <div class="fak-detail-hero">
+      <span class="fak-detail-icon"><%= fak.icon %></span>
+      <div>
+        <h1><%= fak.nama %></h1>
+        <p>Program Studi S1 | Akreditasi <strong><%= fak.akreditasi %></strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fak-detail-grid">
+      <div class="fak-detail-main">
+        <div class="detail-card">
+          <h2>Tentang Program Studi</h2>
+          <p><%= fak.deskripsi %></p>
+        </div>
+
+        <div class="detail-card">
+          <h2>Keunggulan Program</h2>
+          <ul class="keunggulan-list">
+            <% fak.keunggulan.forEach(k => { %>
+            <li>
+              <span class="check-icon" style="color: <%= fak.warna %>">✓</span>
+              <%= k %>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+
+        <div class="detail-card">
+          <h2>Prospek Karir</h2>
+          <div class="prospek-grid">
+            <% fak.prospek.forEach(p => { %>
+            <div class="prospek-item" style="border-color: <%= fak.warna %>; color: <%= fak.warna %>">
+              <%= p %>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="fak-detail-side">
+        <div class="side-card">
+          <h3>Informasi Program</h3>
+          <table class="info-table">
+            <tr><td>Jenjang</td><td>S1 (Sarjana)</td></tr>
+            <tr><td>Gelar</td><td><%= fak.id.includes('teknik') ? 'S.T.' : fak.id === 'manajemen' ? 'S.M.' : fak.id === 'akuntansi' ? 'S.Ak.' : fak.id === 'sastra-inggris' ? 'S.S.' : 'S.I.Kom.' %></td></tr>
+            <tr><td>Akreditasi</td><td><strong><%= fak.akreditasi %></strong></td></tr>
+            <tr><td>Durasi Studi</td><td>4 Tahun (8 Semester)</td></tr>
+            <tr><td>SKS</td><td>144 SKS</td></tr>
+            <tr><td>Kelas</td><td>Reguler & Karyawan</td></tr>
+          </table>
+        </div>
+
+        <div class="side-card cta-card" style="background: <%= fak.warna %>">
+          <h3>Tertarik mendaftar?</h3>
+          <p>Daftarkan diri kamu sekarang dan raih masa depan gemilang di program studi <%= fak.nama %>.</p>
+          <a href="/penerimaan" class="btn btn-white">Daftar Sekarang</a>
+          <a href="/kontak" class="btn btn-outline-white">Tanya-Tanya Dulu</a>
+        </div>
+
+        <div class="side-card">
+          <h3>Biaya Kuliah</h3>
+          <div class="biaya-info">
+            <div class="biaya-item">
+              <span>Uang Pangkal (UP)</span>
+              <strong>Mulai Rp 3.500.000</strong>
+            </div>
+            <div class="biaya-item">
+              <span>SPP per Semester</span>
+              <strong>Mulai Rp 4.200.000</strong>
+            </div>
+            <div class="biaya-item">
+              <span>Beasiswa</span>
+              <strong>Tersedia s.d. 50%</strong>
+            </div>
+          </div>
+          <small>*Biaya dapat berubah. Hubungi kami untuk info terkini.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

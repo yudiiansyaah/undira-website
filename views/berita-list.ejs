@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<div class="page-hero page-hero-sm">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / Berita</div>
+    <h1>Berita &amp; Pengumuman</h1>
+    <p>Informasi terbaru dari Universitas Dian Nusantara</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <% if (berita.length === 0) { %>
+    <div style="text-align:center;padding:4rem 0;color:#888">Belum ada berita.</div>
+    <% } %>
+    <div class="berita-grid">
+      <% berita.forEach(b => { %>
+      <a href="/berita/<%= b.slug %>" class="berita-card">
+        <div class="berita-img">
+          <% if (b.gambar) { %>
+            <img src="<%= b.gambar %>" alt="<%= b.judul %>">
+          <% } else { %>
+            <div class="no-img">UNDIRA</div>
+          <% } %>
+          <div class="berita-kategori"><%= b.kategori %></div>
+        </div>
+        <div class="berita-body">
+          <h3 class="berita-judul"><%= b.judul %></h3>
+          <p class="berita-konten"><%= b.konten.substring(0, 100) %>...</p>
+          <div class="berita-meta"><%= new Date(b.created_at).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'}) %></div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

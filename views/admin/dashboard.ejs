@@ -1,0 +1,110 @@
+<%- include('partials/sidebar') %>
+
+<% if (locals.success) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (locals.error) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-icon blue">&#128203;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.totalPendaftaran %></div>
+      <div class="stat-label">Total Pendaftaran</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon orange">&#9203;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.pendingPendaftaran %></div>
+      <div class="stat-label">Menunggu Proses</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon green">&#9989;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.diterimaPendaftaran %></div>
+      <div class="stat-label">Diterima</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon purple">&#9993;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.belumDibacaKontak %></div>
+      <div class="stat-label">Pesan Belum Dibaca</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon red">&#128240;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.publishedBerita %></div>
+      <div class="stat-label">Berita Published</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon gray">&#128101;</div>
+    <div class="stat-info">
+      <div class="stat-number"><%= stats.totalKontak %></div>
+      <div class="stat-label">Total Pesan Masuk</div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Tables -->
+<div class="dashboard-grid">
+  <div class="card">
+    <div class="card-header">
+      <h3>Pendaftaran Terbaru</h3>
+      <a href="/admin/pendaftaran" class="btn-sm-link">Lihat Semua &rarr;</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Nama</th><th>Program Studi</th><th>Kampus</th><th>Status</th><th>Tanggal</th></tr>
+        </thead>
+        <tbody>
+          <% if (recentPendaftaran.length === 0) { %>
+          <tr><td colspan="5" class="text-center text-muted">Belum ada data</td></tr>
+          <% } %>
+          <% recentPendaftaran.forEach(p => { %>
+          <tr>
+            <td><a href="/admin/pendaftaran/<%= p.id %>"><%= p.nama %></a></td>
+            <td><%= p.program_studi %></td>
+            <td><%= p.kampus %></td>
+            <td><span class="badge badge-<%= p.status %>"><%= p.status %></span></td>
+            <td><%= new Date(p.created_at).toLocaleDateString('id-ID') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3>Pesan Terbaru</h3>
+      <a href="/admin/kontak" class="btn-sm-link">Lihat Semua &rarr;</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Nama</th><th>Subjek</th><th>Status</th><th>Tanggal</th></tr>
+        </thead>
+        <tbody>
+          <% if (recentKontak.length === 0) { %>
+          <tr><td colspan="4" class="text-center text-muted">Belum ada pesan</td></tr>
+          <% } %>
+          <% recentKontak.forEach(k => { %>
+          <tr>
+            <td><a href="/admin/kontak/<%= k.id %>"><%= k.nama %></a></td>
+            <td><%= k.subjek %></td>
+            <td><span class="badge badge-<%= k.status === 'belum_dibaca' ? 'pending' : 'diterima' %>"><%= k.status === 'belum_dibaca' ? 'Baru' : 'Dibaca' %></span></td>
+            <td><%= new Date(k.created_at).toLocaleDateString('id-ID') %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

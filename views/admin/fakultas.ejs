@@ -1,0 +1,51 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <h2>Kelola Fakultas & Prodi</h2>
+  <a href="/admin/fakultas/buat" class="btn-primary">+ Tambah Fakultas</a>
+</div>
+
+<% if (success && success.length) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Nama Fakultas</th>
+          <th>Singkatan</th>
+          <th>Akreditasi</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length === 0) { %>
+        <tr><td colspan="5" class="text-center text-muted">Belum ada data fakultas</td></tr>
+        <% } %>
+        <% data.forEach(f => { %>
+        <tr>
+          <td><span style="font-size: 1.5rem;"><%= f.icon %></span></td>
+          <td>
+            <div style="font-weight: bold; color: <%= f.warna %>;"><%= f.nama %></div>
+            <small class="text-muted">ID: <%= f.id %></small>
+          </td>
+          <td><%= f.singkatan %></td>
+          <td><span class="badge badge-diterima"><%= f.akreditasi %></span></td>
+          <td>
+            <div class="btn-group">
+              <a href="/admin/fakultas/<%= f.id %>/edit" class="btn-table">Edit</a>
+              <form method="POST" action="/admin/fakultas/<%= f.id %>/hapus" style="display:inline" onsubmit="return confirm('Hapus fakultas ini?')">
+                <button type="submit" class="btn-table btn-danger">Hapus</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

@@ -1,0 +1,199 @@
+<%- include('partials/header') %>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">Selamat Datang di UNDIRA</div>
+    <h1 class="hero-title">Universitas Dian Nusantara</h1>
+    <p class="hero-subtitle">Membangun Masa Depan dengan Ilmu, Karakter, dan Inovasi. Bergabunglah bersama ribuan mahasiswa berprestasi dari seluruh Indonesia.</p>
+    <div class="hero-actions">
+      <a href="/penerimaan" class="btn btn-primary btn-lg">Daftar Sekarang</a>
+      <a href="/tentang" class="btn btn-outline btn-lg">Pelajari Lebih Lanjut</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Program Studi</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Lokasi Kampus</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">10K+</div>
+        <div class="stat-label">Mahasiswa Aktif</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">25+</div>
+        <div class="stat-label">Tahun Berdiri</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Announcement Banner -->
+<section class="announcement">
+  <div class="container">
+    <div class="announcement-inner">
+      <span class="announcement-badge">INFO PMB 2024/2025</span>
+      <p>Pendaftaran Mahasiswa Baru gelombang 3 dibuka hingga 31 Maret 2025. Dapatkan beasiswa prestasi hingga 50%!</p>
+      <a href="/penerimaan" class="btn btn-sm btn-white">Daftar Sekarang</a>
+    </div>
+  </div>
+</section>
+
+<!-- Fakultas Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Program Unggulan</span>
+      <h2 class="section-title">Fakultas & Program Studi</h2>
+      <p class="section-desc">Pilih program studi yang sesuai dengan passion dan karir impianmu. Kami memiliki 8 program studi yang terakreditasi dan berorientasi pada industri.</p>
+    </div>
+
+    <div class="fakultas-grid">
+      <% fakultas.forEach(fak => { %>
+      <a href="/fakultas/<%= fak.id %>" class="fak-card" style="--fak-color: <%= fak.warna %>">
+        <div class="fak-icon"><%= fak.icon %></div>
+        <h3 class="fak-nama"><%= fak.nama %></h3>
+        <p class="fak-desc"><%= fak.deskripsi.substring(0, 100) %>...</p>
+        <div class="fak-meta">
+          <span class="fak-akreditasi">Akreditasi: <%= fak.akreditasi %></span>
+          <span class="fak-arrow">→</span>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+
+    <div class="section-cta">
+      <a href="/fakultas" class="btn btn-primary">Lihat Semua Program Studi</a>
+    </div>
+  </div>
+</section>
+
+<!-- Why UNDIRA -->
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Mengapa UNDIRA?</span>
+      <h2 class="section-title">Keunggulan Kami</h2>
+    </div>
+    <div class="keunggulan-grid">
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">🎓</div>
+        <h3>Dosen Berpengalaman</h3>
+        <p>Didukung oleh tenaga pengajar profesional berpengalaman di bidangnya dengan gelar S2 dan S3.</p>
+      </div>
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">🏢</div>
+        <h3>Fasilitas Modern</h3>
+        <p>Laboratorium, studio, dan ruang belajar berteknologi tinggi untuk mendukung proses pembelajaran.</p>
+      </div>
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">🤝</div>
+        <h3>Kerjasama Industri</h3>
+        <p>Kemitraan dengan ratusan perusahaan nasional dan multinasional untuk program magang dan rekrutmen.</p>
+      </div>
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">🌏</div>
+        <h3>Jaringan Alumni</h3>
+        <p>Komunitas alumni yang kuat tersebar di berbagai sektor industri dalam dan luar negeri.</p>
+      </div>
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">💡</div>
+        <h3>Inovasi & Riset</h3>
+        <p>Pusat penelitian aktif yang menghasilkan inovasi dan solusi nyata bagi masyarakat Indonesia.</p>
+      </div>
+      <div class="keunggulan-card">
+        <div class="keunggulan-icon">🏆</div>
+        <h3>Prestasi Nasional</h3>
+        <p>Mahasiswa UNDIRA aktif berprestasi dalam berbagai kompetisi tingkat nasional dan internasional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kampus Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Lokasi Strategis</span>
+      <h2 class="section-title">3 Kampus di Jabodetabek</h2>
+      <p class="section-desc">UNDIRA hadir di tiga lokasi strategis untuk memudahkan akses pendidikan berkualitas bagi seluruh lapisan masyarakat.</p>
+    </div>
+
+    <div class="kampus-grid">
+      <% kampus.forEach(k => { %>
+      <div class="kampus-card">
+        <div class="kampus-badge"><%= k.keterangan %></div>
+        <h3 class="kampus-nama"><%= k.nama %></h3>
+        <p class="kampus-alamat">📍 <%= k.alamat %></p>
+        <p class="kampus-telp">📞 <%= k.telepon %></p>
+        <div class="kampus-fasilitas">
+          <% k.fasilitas.slice(0,3).forEach(f => { %>
+          <span class="fasilitas-tag"><%= f %></span>
+          <% }) %>
+        </div>
+        <a href="/kampus" class="btn btn-outline btn-sm">Lihat Detail</a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Berita Section -->
+<% if (typeof berita !== 'undefined' && berita.length > 0) { %>
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Terbaru</span>
+      <h2 class="section-title">Berita &amp; Pengumuman</h2>
+      <p class="section-desc">Informasi dan pengumuman terkini dari Universitas Dian Nusantara.</p>
+    </div>
+    <div class="berita-grid">
+      <% berita.forEach(b => { %>
+      <a href="/berita/<%= b.slug %>" class="berita-card">
+        <div class="berita-img">
+          <% if (b.gambar) { %>
+            <img src="<%= b.gambar %>" alt="<%= b.judul %>">
+          <% } else { %>
+            <div class="no-img">UNDIRA</div>
+          <% } %>
+          <div class="berita-kategori"><%= b.kategori %></div>
+        </div>
+        <div class="berita-body">
+          <h3 class="berita-judul"><%= b.judul %></h3>
+          <p class="berita-konten"><%= b.konten.substring(0, 100) %>...</p>
+          <div class="berita-meta"><%= new Date(b.created_at).toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'}) %></div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+    <div class="section-cta">
+      <a href="/berita" class="btn btn-primary">Lihat Semua Berita</a>
+    </div>
+  </div>
+</section>
+<% } %>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Siap Memulai Perjalananmu?</h2>
+      <p>Daftarkan diri sekarang dan jadilah bagian dari komunitas akademik UNDIRA yang terus berkembang dan berprestasi.</p>
+      <div class="cta-actions">
+        <a href="/penerimaan" class="btn btn-white btn-lg">Daftar Mahasiswa Baru</a>
+        <a href="/kontak" class="btn btn-outline-white btn-lg">Hubungi Kami</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

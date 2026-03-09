@@ -1,0 +1,100 @@
+<%- include('partials/header') %>
+
+<div class="page-hero page-hero-sm">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / Kampus</div>
+    <h1>Lokasi Kampus</h1>
+    <p>UNDIRA hadir di 3 lokasi strategis di wilayah Jakarta dan Bekasi</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <% kampus.forEach((k, i) => { %>
+    <div class="kampus-detail-card <%= i % 2 === 1 ? 'reverse' : '' %>">
+      <div class="kampus-detail-info">
+        <span class="kampus-number">Kampus <%= ['01','02','03'][i] %></span>
+        <h2><%= k.nama %></h2>
+        <p class="kampus-keterangan"><%= k.keterangan %></p>
+
+        <div class="kampus-contact-list">
+          <div class="kampus-contact-item">
+            <span class="contact-label">Alamat</span>
+            <span><%= k.alamat %></span>
+          </div>
+          <div class="kampus-contact-item">
+            <span class="contact-label">Telepon</span>
+            <span><%= k.telepon %></span>
+          </div>
+          <div class="kampus-contact-item">
+            <span class="contact-label">Email</span>
+            <span><%= k.email %></span>
+          </div>
+        </div>
+
+        <div class="kampus-fasilitas-list">
+          <h4>Fasilitas Tersedia:</h4>
+          <div class="fasilitas-grid">
+            <% k.fasilitas.forEach(f => { %>
+            <span class="fasilitas-item">✓ <%= f %></span>
+            <% }) %>
+          </div>
+        </div>
+
+        <a href="<%= k.maps %>" target="_blank" class="btn btn-primary">Lihat di Google Maps</a>
+      </div>
+
+      <div class="kampus-detail-map">
+        <div class="map-placeholder">
+          <div class="map-pin">📍</div>
+          <h3><%= k.nama %></h3>
+          <p><%= k.alamat %></p>
+          <a href="<%= k.maps %>" target="_blank" class="btn btn-outline btn-sm">Buka Maps</a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section section-gray">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Fasilitas Unggulan UNDIRA</h2>
+    </div>
+    <div class="fasilitas-unggulan-grid">
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">🖥️</div>
+        <h3>Laboratorium Modern</h3>
+        <p>Laboratorium komputer, teknik, dan sains dengan peralatan mutakhir dan software terbaru.</p>
+      </div>
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">📖</div>
+        <h3>Perpustakaan Digital</h3>
+        <p>Koleksi buku fisik dan digital yang lengkap, termasuk akses ke jurnal internasional.</p>
+      </div>
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">⚽</div>
+        <h3>Fasilitas Olahraga</h3>
+        <p>Lapangan olahraga, gym, dan sarana kebugaran untuk mendukung aktivitas mahasiswa.</p>
+      </div>
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">🍽️</div>
+        <h3>Kantin & Cafeteria</h3>
+        <p>Area makan bersih dan nyaman dengan pilihan menu makanan bergizi dan harga terjangkau.</p>
+      </div>
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">🕌</div>
+        <h3>Sarana Ibadah</h3>
+        <p>Masjid dan mushola yang nyaman untuk memenuhi kebutuhan spiritual mahasiswa dan civitas akademika.</p>
+      </div>
+      <div class="fasilitas-unggulan-card">
+        <div class="fu-icon">🚌</div>
+        <h3>Transportasi & Parkir</h3>
+        <p>Area parkir luas dan akses transportasi umum yang mudah untuk kenyamanan mahasiswa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Universitas Dian Nusantara</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <div class="logo-icon">UN</div>
+      <div class="logo-text">
+        <span class="logo-title">UNDIRA</span>
+        <span class="logo-sub">Universitas Dian Nusantara</span>
+      </div>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class="nav-link">Beranda</a></li>
+      <li><a href="/tentang" class="nav-link">Tentang</a></li>
+      <li class="nav-dropdown">
+        <a href="/fakultas" class="nav-link">Fakultas</a>
+        <ul class="dropdown-menu">
+          <li><a href="/fakultas/teknik-informatika">Teknik Informatika</a></li>
+          <li><a href="/fakultas/teknik-sipil">Teknik Sipil</a></li>
+          <li><a href="/fakultas/teknik-mesin">Teknik Mesin</a></li>
+          <li><a href="/fakultas/teknik-elektro">Teknik Elektro</a></li>
+          <li><a href="/fakultas/sastra-inggris">Sastra Inggris</a></li>
+          <li><a href="/fakultas/manajemen">Manajemen</a></li>
+          <li><a href="/fakultas/ilmu-komunikasi">Ilmu Komunikasi</a></li>
+          <li><a href="/fakultas/akuntansi">Akuntansi</a></li>
+        </ul>
+      </li>
+      <li><a href="/kampus" class="nav-link">Kampus</a></li>
+      <li><a href="/kontak" class="nav-link">Kontak</a></li>
+      <li><a href="/penerimaan" class="btn btn-primary nav-btn">Daftar Sekarang</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,62 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <a href="/admin/berita" class="btn-back">&larr; Kembali</a>
+  <h2><%= item ? 'Edit Berita' : 'Buat Berita Baru' %></h2>
+</div>
+
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="card">
+  <form method="POST" action="<%= item ? '/admin/berita/' + item.id + '/edit' : '/admin/berita/buat' %>" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>Judul Berita <span class="required">*</span></label>
+      <input type="text" name="judul" value="<%= item ? item.judul : '' %>" placeholder="Judul berita..." required>
+    </div>
+
+    <div class="form-row-2">
+      <div class="form-group">
+        <label>Kategori</label>
+        <select name="kategori">
+          <option value="berita" <%= !item || item.kategori === 'berita' ? 'selected' : '' %>>Berita</option>
+          <option value="pengumuman" <%= item && item.kategori === 'pengumuman' ? 'selected' : '' %>>Pengumuman</option>
+          <option value="kegiatan" <%= item && item.kategori === 'kegiatan' ? 'selected' : '' %>>Kegiatan</option>
+          <option value="prestasi" <%= item && item.kategori === 'prestasi' ? 'selected' : '' %>>Prestasi</option>
+          <option value="akademik" <%= item && item.kategori === 'akademik' ? 'selected' : '' %>>Akademik</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <select name="status">
+          <option value="draft" <%= !item || item.status === 'draft' ? 'selected' : '' %>>Draft</option>
+          <option value="published" <%= item && item.status === 'published' ? 'selected' : '' %>>Published</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Gambar Unggulan</label>
+      <% if (item && item.gambar) { %>
+        <div style="margin-bottom: 10px;">
+          <img src="<%= item.gambar %>" alt="Preview" style="max-width: 200px; border-radius: 8px; display: block; margin-bottom: 5px;">
+          <label style="font-weight: normal; font-size: 0.85rem; color: #e11d48; cursor: pointer;">
+            <input type="checkbox" name="hapus_gambar" value="1"> Hapus gambar saat ini
+          </label>
+        </div>
+      <% } %>
+      <input type="file" name="gambar" accept="image/*">
+      <small class="text-muted">Format: JPG, PNG, WEBP. Maksimal 2MB.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Konten <span class="required">*</span></label>
+      <textarea name="konten" rows="12" placeholder="Tulis konten berita di sini..." required><%= item ? item.konten : '' %></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary-full"><%= item ? 'Simpan Perubahan' : 'Publikasikan' %></button>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/sidebar-end') %>

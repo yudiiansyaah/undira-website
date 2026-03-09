@@ -1,0 +1,156 @@
+<%- include('partials/header') %>
+
+<div class="page-hero page-hero-sm">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / Penerimaan</div>
+    <h1>Penerimaan Mahasiswa Baru</h1>
+    <p>Tahun Akademik 2024/2025</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="pmb-grid">
+      <div class="pmb-main">
+        <div class="pmb-jalur">
+          <h2>Jalur Penerimaan</h2>
+          <div class="jalur-cards">
+            <div class="jalur-card active">
+              <div class="jalur-badge">Buka</div>
+              <h3>Jalur Reguler</h3>
+              <p>Pendaftaran melalui seleksi berkas dan tes tertulis</p>
+              <ul>
+                <li>Pendaftaran: Januari - Agustus 2025</li>
+                <li>Seleksi: Berkas + Tes Potensi Akademik</li>
+                <li>Kuota: Terbuka luas</li>
+              </ul>
+              <span class="jalur-status open">Pendaftaran Dibuka</span>
+            </div>
+            <div class="jalur-card">
+              <div class="jalur-badge">Prestasi</div>
+              <h3>Jalur Beasiswa</h3>
+              <p>Khusus bagi calon mahasiswa berprestasi</p>
+              <ul>
+                <li>Nilai rata-rata rapor minimal 80</li>
+                <li>Prestasi akademik / non-akademik</li>
+                <li>Bebas biaya pendidikan s.d. 50%</li>
+              </ul>
+              <span class="jalur-status open">Pendaftaran Dibuka</span>
+            </div>
+            <div class="jalur-card">
+              <div class="jalur-badge">Karyawan</div>
+              <h3>Kelas Karyawan</h3>
+              <p>Kuliah sore/malam untuk profesional bekerja</p>
+              <ul>
+                <li>Jadwal: Sore &amp; Malam hari</li>
+                <li>Fleksibel dan terjangkau</li>
+                <li>RPL (Rekognisi Pembelajaran Lampau)</li>
+              </ul>
+              <span class="jalur-status open">Pendaftaran Dibuka</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmb-syarat">
+          <h2>Persyaratan Pendaftaran</h2>
+          <div class="syarat-list">
+            <div class="syarat-item">
+              <span class="syarat-num">1</span>
+              <div>
+                <h4>Ijazah / SKHUN</h4>
+                <p>Ijazah SMA/SMK/MA atau sederajat (asli dan fotokopi)</p>
+              </div>
+            </div>
+            <div class="syarat-item">
+              <span class="syarat-num">2</span>
+              <div>
+                <h4>Kartu Identitas</h4>
+                <p>KTP / KK / Akta Kelahiran (fotokopi)</p>
+              </div>
+            </div>
+            <div class="syarat-item">
+              <span class="syarat-num">3</span>
+              <div>
+                <h4>Pas Foto</h4>
+                <p>4 lembar ukuran 3x4 dan 4x6 (latar belakang merah)</p>
+              </div>
+            </div>
+            <div class="syarat-item">
+              <span class="syarat-num">4</span>
+              <div>
+                <h4>Formulir Pendaftaran</h4>
+                <p>Formulir yang telah diisi lengkap dan ditandatangani</p>
+              </div>
+            </div>
+            <div class="syarat-item">
+              <span class="syarat-num">5</span>
+              <div>
+                <h4>Biaya Pendaftaran</h4>
+                <p>Rp 150.000 (gratis untuk pendaftar beasiswa)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pmb-side">
+        <div class="pmb-form-card">
+          <h3>Daftar Online</h3>
+          <form class="pmb-form" id="pmbForm">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" name="nama" placeholder="Masukkan nama lengkap" required>
+            </div>
+            <div class="form-group">
+              <label>Nomor HP / WhatsApp</label>
+              <input type="tel" name="telepon" placeholder="08xx-xxxx-xxxx" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Pilihan Program Studi</label>
+              <select name="program_studi" required>
+                <option value="">-- Pilih Program Studi --</option>
+                <% fakultas.forEach(f => { %>
+                <option value="<%= f.nama %>"><%= f.nama %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Jalur Pendaftaran</label>
+              <select name="jalur" required>
+                <option value="">-- Pilih Jalur --</option>
+                <option value="Jalur Reguler">Jalur Reguler</option>
+                <option value="Jalur Beasiswa">Jalur Beasiswa</option>
+                <option value="Kelas Karyawan">Kelas Karyawan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Kampus yang Dituju</label>
+              <select name="kampus" required>
+                <option value="">-- Pilih Kampus --</option>
+                <option value="Kampus Tanjung Duren">Kampus Tanjung Duren</option>
+                <option value="Kampus Greenville">Kampus Greenville</option>
+                <option value="Kampus Cibubur">Kampus Cibubur</option>
+              </select>
+            </div>
+            <div id="pmbMsg" style="display:none"></div>
+            <button type="submit" class="btn btn-primary btn-block">Kirim Pendaftaran</button>
+          </form>
+        </div>
+
+        <div class="pmb-info-card">
+          <h3>Info PMB</h3>
+          <p><strong>Hotline PMB:</strong><br>(021) 5694-8000</p>
+          <p><strong>WhatsApp:</strong><br>0812-8888-0000</p>
+          <p><strong>Email:</strong><br>pmb@undira.ac.id</p>
+          <p><strong>Jam Layanan:</strong><br>Senin-Jumat: 08.00-16.00 WIB<br>Sabtu: 08.00-12.00 WIB</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

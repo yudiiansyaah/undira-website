@@ -1,0 +1,52 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <h2>Kelola Lokasi Kampus</h2>
+  <a href="/admin/kampus/buat" class="btn-primary">+ Tambah Kampus</a>
+</div>
+
+<% if (success && success.length) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nama Kampus</th>
+          <th>Alamat</th>
+          <th>Kontak</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length === 0) { %>
+        <tr><td colspan="4" class="text-center text-muted">Belum ada data kampus</td></tr>
+        <% } %>
+        <% data.forEach(k => { %>
+        <tr>
+          <td>
+            <div style="font-weight: bold;"><%= k.nama %></div>
+            <small class="text-muted"><%= k.keterangan %></small>
+          </td>
+          <td style="max-width: 300px; font-size: 0.85rem;"><%= k.alamat %></td>
+          <td>
+            <div style="font-size: 0.85rem;">📞 <%= k.telepon %></div>
+            <div style="font-size: 0.85rem;">✉️ <%= k.email %></div>
+          </td>
+          <td>
+            <div class="btn-group">
+              <a href="/admin/kampus/<%= k.id %>/edit" class="btn-table">Edit</a>
+              <form method="POST" action="/admin/kampus/<%= k.id %>/hapus" style="display:inline" onsubmit="return confirm('Hapus kampus ini?')">
+                <button type="submit" class="btn-table btn-danger">Hapus</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

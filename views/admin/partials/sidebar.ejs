@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - Admin UNDIRA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="admin-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <div class="logo-icon-sm">UN</div>
+        <div>
+          <div class="sidebar-title">UNDIRA</div>
+          <div class="sidebar-sub">Admin Panel</div>
+        </div>
+      </div>
+      <button class="sidebar-close" id="sidebarClose">&#x2715;</button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <span class="nav-section-label">Menu Utama</span>
+        <a href="/admin/dashboard" class="nav-item <%= title === 'Dashboard' ? 'active' : '' %>">
+          <span class="nav-icon">&#128202;</span> Dashboard
+        </a>
+      </div>
+      <div class="nav-section">
+        <span class="nav-section-label">Data</span>
+        <a href="/admin/fakultas" class="nav-item <%= title.includes('Fakultas') ? 'active' : '' %>">
+          <span class="nav-icon">&#127891;</span> Fakultas & Prodi
+        </a>
+        <a href="/admin/kampus" class="nav-item <%= title.includes('Kampus') ? 'active' : '' %>">
+          <span class="nav-icon">&#127980;</span> Lokasi Kampus
+        </a>
+        <a href="/admin/pendaftaran" class="nav-item <%= title.includes('Pendaftaran') ? 'active' : '' %>">
+          <span class="nav-icon">&#128203;</span> Pendaftaran
+        </a>
+        <a href="/admin/kontak" class="nav-item <%= title.includes('Kontak') || title.includes('Pesan') ? 'active' : '' %>">
+          <span class="nav-icon">&#9993;</span> Pesan Masuk
+        </a>
+        <a href="/admin/berita" class="nav-item <%= title.includes('Berita') ? 'active' : '' %>">
+          <span class="nav-icon">&#128240;</span> Berita &amp; Pengumuman
+        </a>
+      </div>
+      <div class="nav-section">
+        <span class="nav-section-label">Akun</span>
+        <a href="/admin/pengaturan" class="nav-item <%= title === 'Pengaturan Akun' ? 'active' : '' %>">
+          <span class="nav-icon">&#9881;</span> Pengaturan
+        </a>
+        <a href="/admin/logout" class="nav-item nav-logout">
+          <span class="nav-icon">&#128682;</span> Logout
+        </a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="admin-main">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <button class="topbar-toggle" id="sidebarToggle">&#9776;</button>
+      <div class="topbar-title"><%= title %></div>
+      <div class="topbar-user">
+        <div class="topbar-avatar"><%= user.nama.charAt(0) %></div>
+        <span><%= user.nama %></span>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="admin-content">

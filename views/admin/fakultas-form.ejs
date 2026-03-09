@@ -1,0 +1,72 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <a href="/admin/fakultas" class="btn-back">&larr; Kembali</a>
+  <h2><%= item ? 'Edit Fakultas' : 'Tambah Fakultas Baru' %></h2>
+</div>
+
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="card">
+  <form method="POST" action="<%= item ? '/admin/fakultas/' + item.id + '/edit' : '/admin/fakultas/buat' %>">
+    <div class="form-row-2">
+      <div class="form-group">
+        <label>ID Fakultas (Slug) <span class="required">*</span></label>
+        <input type="text" name="id" value="<%= item ? item.id : '' %>" placeholder="contoh: teknik-informatika" <%= item ? 'readonly' : 'required' %>>
+        <small class="text-muted">ID tidak bisa diubah setelah dibuat.</small>
+      </div>
+      <div class="form-group">
+        <label>Nama Fakultas <span class="required">*</span></label>
+        <input type="text" name="nama" value="<%= item ? item.nama : '' %>" placeholder="Nama Lengkap Fakultas" required>
+      </div>
+    </div>
+
+    <div class="form-row-3">
+      <div class="form-group">
+        <label>Singkatan</label>
+        <input type="text" name="singkatan" value="<%= item ? item.singkatan : '' %>" placeholder="Contoh: TI">
+      </div>
+      <div class="form-group">
+        <label>Icon (Emoji/SVG)</label>
+        <input type="text" name="icon" value="<%= item ? item.icon : '' %>" placeholder="Contoh: 💻">
+      </div>
+      <div class="form-group">
+        <label>Warna Tema (Hex)</label>
+        <input type="color" name="warna" value="<%= item ? item.warna : '#2563eb' %>" style="height: 40px; padding: 2px;">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Akreditasi</label>
+      <select name="akreditasi">
+        <option value="Unggul" <%= item && item.akreditasi === 'Unggul' ? 'selected' : '' %>>Unggul</option>
+        <option value="A" <%= item && item.akreditasi === 'A' ? 'selected' : '' %>>A</option>
+        <option value="B" <%= (item && item.akreditasi === 'B') || !item ? 'selected' : '' %>>B</option>
+        <option value="C" <%= item && item.akreditasi === 'C' ? 'selected' : '' %>>C</option>
+        <option value="Baik" <%= item && item.akreditasi === 'Baik' ? 'selected' : '' %>>Baik</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Deskripsi Singkat</label>
+      <textarea name="deskripsi" rows="4" placeholder="Jelaskan profil singkat fakultas..."><%= item ? item.deskripsi : '' %></textarea>
+    </div>
+
+    <div class="form-row-2">
+      <div class="form-group">
+        <label>Keunggulan (Satu per baris)</label>
+        <textarea name="keunggulan" rows="6" placeholder="Item 1&#10;Item 2&#10;Item 3"><%= item ? item.keunggulan : '' %></textarea>
+      </div>
+      <div class="form-group">
+        <label>Prospek Karir (Satu per baris)</label>
+        <textarea name="prospek" rows="6" placeholder="Karir 1&#10;Karir 2&#10;Karir 3"><%= item ? item.prospek : '' %></textarea>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-primary-full"><%= item ? 'Simpan Perubahan' : 'Tambah Fakultas' %></button>
+    </div>
+  </form>
+</div>
+
+<%- include('partials/sidebar-end') %>

@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+<div class="page-hero page-hero-sm">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / <a href="/berita">Berita</a> / Detail</div>
+    <span class="berita-kategori-hero"><%= artikel.kategori %></span>
+    <h1><%= artikel.judul %></h1>
+    <p><%= new Date(artikel.created_at).toLocaleDateString('id-ID', {weekday:'long',day:'numeric',month:'long',year:'numeric'}) %></p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="berita-detail-grid">
+      <div class="berita-detail-main">
+        <% if (artikel.gambar) { %>
+          <div class="berita-main-img">
+            <img src="<%= artikel.gambar %>" alt="<%= artikel.judul %>">
+          </div>
+        <% } %>
+        <div class="berita-detail-content">
+          <p style="white-space: pre-wrap;"><%= artikel.konten %></p>
+        </div>
+      </div>
+      <div class="berita-detail-side">
+        <h3>Berita Lainnya</h3>
+        <% lainnya.forEach(b => { %>
+        <a href="/berita/<%= b.slug %>" class="berita-side-card">
+          <div class="side-card-img">
+            <% if (b.gambar) { %>
+              <img src="<%= b.gambar %>" alt="<%= b.judul %>">
+            <% } else { %>
+              <div class="no-img-side">UN</div>
+            <% } %>
+          </div>
+          <div class="side-card-body">
+            <span class="berita-kategori"><%= b.kategori %></span>
+            <h4><%= b.judul %></h4>
+            <small><%= new Date(b.created_at).toLocaleDateString('id-ID') %></small>
+          </div>
+        </a>
+        <% }) %>
+        <% if (lainnya.length === 0) { %>
+        <p style="color:#888;font-size:0.9rem">Tidak ada berita lainnya.</p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

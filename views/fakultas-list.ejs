@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="page-hero page-hero-sm">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Beranda</a> / Fakultas</div>
+    <h1>Fakultas & Program Studi</h1>
+    <p>Temukan program studi impianmu di Universitas Dian Nusantara</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="fakultas-list-grid">
+      <% fakultas.forEach(fak => { %>
+      <div class="fak-list-card" style="--fak-color: <%= fak.warna %>">
+        <div class="fak-list-header">
+          <span class="fak-list-icon"><%= fak.icon %></span>
+          <div>
+            <h3 class="fak-list-nama"><%= fak.nama %></h3>
+            <span class="fak-list-singkatan">Kode: <%= fak.singkatan %></span>
+          </div>
+          <span class="fak-list-akreditasi">Akreditasi <strong><%= fak.akreditasi %></strong></span>
+        </div>
+        <p class="fak-list-desc"><%= fak.deskripsi %></p>
+        <div class="fak-list-prospek">
+          <h4>Prospek Karir:</h4>
+          <div class="prospek-tags">
+            <% fak.prospek.forEach(p => { %>
+            <span class="prospek-tag"><%= p %></span>
+            <% }) %>
+          </div>
+        </div>
+        <a href="/fakultas/<%= fak.id %>" class="btn btn-primary btn-sm">Lihat Detail Program</a>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

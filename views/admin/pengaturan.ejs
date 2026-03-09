@@ -1,0 +1,36 @@
+<%- include('partials/sidebar') %>
+
+<% if (success && success.length) { %><div class="alert alert-success"><%= success %></div><% } %>
+<% if (error && error.length) { %><div class="alert alert-error"><%= error %></div><% } %>
+
+<div class="detail-grid">
+  <div class="card">
+    <div class="card-header"><h3>Informasi Akun</h3></div>
+    <div class="detail-table">
+      <div class="detail-row"><span>Nama</span><strong><%= user.nama %></strong></div>
+      <div class="detail-row"><span>Email</span><strong><%= user.email %></strong></div>
+      <div class="detail-row"><span>Role</span><strong><%= user.role %></strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h3>Ganti Password</h3></div>
+    <form method="POST" action="/admin/pengaturan/password" class="form-compact">
+      <div class="form-group">
+        <label>Password Lama</label>
+        <input type="password" name="password_lama" required placeholder="Password saat ini">
+      </div>
+      <div class="form-group">
+        <label>Password Baru</label>
+        <input type="password" name="password_baru" required placeholder="Minimal 6 karakter">
+      </div>
+      <div class="form-group">
+        <label>Konfirmasi Password Baru</label>
+        <input type="password" name="password_konfirmasi" required placeholder="Ulangi password baru">
+      </div>
+      <button type="submit" class="btn-primary-full">Simpan Password</button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>

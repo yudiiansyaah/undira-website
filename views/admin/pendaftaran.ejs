@@ -1,0 +1,67 @@
+<%- include('partials/sidebar') %>
+
+<div class="page-actions">
+  <h2>Data Pendaftaran</h2>
+  <span class="badge-count"><%= data.length %> data</span>
+</div>
+
+<!-- Filter -->
+<div class="filter-bar">
+  <form method="GET" class="filter-form">
+    <input type="text" name="search" placeholder="Cari nama / email..." value="<%= filter.search || '' %>">
+    <select name="status">
+      <option value="">Semua Status</option>
+      <option value="pending" <%= filter.status === 'pending' ? 'selected' : '' %>>Pending</option>
+      <option value="diproses" <%= filter.status === 'diproses' ? 'selected' : '' %>>Diproses</option>
+      <option value="diterima" <%= filter.status === 'diterima' ? 'selected' : '' %>>Diterima</option>
+      <option value="ditolak" <%= filter.status === 'ditolak' ? 'selected' : '' %>>Ditolak</option>
+    </select>
+    <select name="prodi">
+      <option value="">Semua Prodi</option>
+      <option value="Teknik Informatika">Teknik Informatika</option>
+      <option value="Teknik Sipil">Teknik Sipil</option>
+      <option value="Teknik Mesin">Teknik Mesin</option>
+      <option value="Teknik Elektro">Teknik Elektro</option>
+      <option value="Sastra Inggris">Sastra Inggris</option>
+      <option value="Manajemen">Manajemen</option>
+      <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
+      <option value="Akuntansi">Akuntansi</option>
+    </select>
+    <button type="submit" class="btn-filter">Filter</button>
+    <a href="/admin/pendaftaran" class="btn-reset">Reset</a>
+  </form>
+</div>
+
+<div class="card">
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>No</th><th>Nama</th><th>Email</th><th>Program Studi</th><th>Jalur</th><th>Kampus</th><th>Status</th><th>Tanggal</th><th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (data.length === 0) { %>
+        <tr><td colspan="9" class="text-center text-muted">Tidak ada data ditemukan</td></tr>
+        <% } %>
+        <% data.forEach((p, i) => { %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><b><%= p.nama %></b></td>
+          <td><%= p.email %></td>
+          <td><%= p.program_studi %></td>
+          <td><%= p.jalur %></td>
+          <td><%= p.kampus %></td>
+          <td><span class="badge badge-<%= p.status %>"><%= p.status %></span></td>
+          <td><%= new Date(p.created_at).toLocaleDateString('id-ID') %></td>
+          <td>
+            <a href="/admin/pendaftaran/<%= p.id %>" class="btn-table">Detail</a>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('partials/sidebar-end') %>
