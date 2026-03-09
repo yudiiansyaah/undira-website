@@ -1,6 +1,6 @@
 # 🎓 Website Universitas Dian Nusantara (UNDIRA)
 
-Halo semua! 👋 Ini adalah project open-source **Website Resmi Universitas Dian Nusantara**. Project ini dibangun menggunakan **Node.js** dan **SQLite** buat kamu yang mau belajar gimana cara bikin website kampus yang fungsional, ada landing page-nya, dan tentu saja ada Panel Admin buat kelola data.
+Halo semua! 👋 Ini adalah project open-source **Website Clone Advance Version 1.0 Universitas Dian Nusantara**. Project ini dibangun menggunakan **Node.js** dan **SQLite** buat Bro & Sis yang mau belajar gimana cara bikin website kampus yang fungsional, ada landing page-nya, dan tentu saja ada Panel Admin buat kelola data.
 
 ---
 
@@ -18,13 +18,13 @@ Berikut adalah beberapa tampilan website jika dijalankan di lokal:
 
 ### 📊 Dashboard Admin
 ![Dashboard Admin](screenshots/dashboardAdmin.png)
-> Di sini kamu bisa kelola berita, pendaftaran mahasiswa, pesan masuk, dan data kampus.
+> Di sini Bro & Sis bisa kelola berita, pendaftaran mahasiswa, pesan masuk, dan data kampus.
 
 ---
 
-## 🛠️ Persiapan Instalasi
+## 🛠️ Prepare Instalasi
 
-Sebelum jalanin aplikasinya, pastiin kamu udah install **Node.js** (rekomendasi versi 16 ke atas) di komputer kamu. Berikut cara install-nya di berbagai OS:
+Sebelum jalanin aplikasinya, pastiin Bro & Sis sudah install **Node.js** (rekomendasi versi 16 ke atas) di komputer kalian. Berikut cara install-nya di berbagai OS:
 
 ### 🐧 Linux (Distro Terkenal)
 *   **Debian/Ubuntu:**
@@ -54,13 +54,13 @@ brew install node
 
 ---
 
-## 🚀 Cara Menjalankan Project
+## 🚀 Cara Running Project
 
-Ikuti langkah-langkah santai ini:
+Ikuti step by step santai ini:
 
 1.  **Clone Repositori**
     ```bash
-    git clone https://github.com/username-kamu/undira-website.git
+    git clone https://github.com/yudiiansyaah/undira-website.git
     cd undira-website
     ```
 
@@ -80,7 +80,7 @@ Ikuti langkah-langkah santai ini:
     SESSION_SECRET=bebas_isi_apa_aja
     ```
 
-4.  **Jalankan Website**
+4.  **Running Website**
     *   **Mode Produksi:**
         ```bash
         npm start
@@ -97,13 +97,13 @@ Ikuti langkah-langkah santai ini:
 
 ## 🔑 Akun Admin (Panel Dashboard)
 
-Biar kamu bisa masuk ke panel admin dan otak-atik datanya, pake akun ini ya:
+Biar bisa masuk ke panel admin dan otak-atik datanya, pake akun ini ya Bro and Sis:
 
 *   **URL Login:** `http://localhost:3001/admin/login`
 *   **Email:** `admin@undira.ac.id`
 *   **Password:** `Admin123!`
 
-*(Jangan lupa ganti passwordnya nanti di database kalau mau dipake beneran!)*
+*(Jangan lupa ganti passwordnya di database kalau mau dipake beneran!)*
 
 ---
 
@@ -112,7 +112,7 @@ Biar kamu bisa masuk ke panel admin dan otak-atik datanya, pake akun ini ya:
 Kadang dunia coding gak seindah pelangi. Kalau dapet error, coba cek ini:
 
 1.  **Error `better-sqlite3` saat `npm install`**
-    *   **Penyebab:** Library ini butuh compile script C++ di komputer kamu.
+    *   **Penyebab:** Library ini butuh compile script C++ di komputer kalian.
     *   **Solusi (Windows):** Install "Build Tools for Visual Studio" atau jalankan `npm install --global windows-build-tools` di PowerShell (Run as Admin).
     *   **Solusi (Linux):** Pastiin udah install `build-essential` atau `base-devel`.
 
@@ -124,7 +124,7 @@ Kadang dunia coding gak seindah pelangi. Kalau dapet error, coba cek ini:
     *   **Solusi:** Hapus file `database/undira.db` (kalau ada), terus restart aplikasinya. System bakal otomatis nge-seed (bikin ulang) database baru yang fresh.
 
 4.  **Node.js Tidak Dikenali**
-    *   **Solusi:** Pastiin kamu udah restart terminal/CMD setelah install Node.js supaya path-nya ke-update.
+    *   **Solusi:** Pastiin bro and sis udah restart terminal/CMD setelah install Node.js supaya path-nya ke-update.
 
 ---
 
