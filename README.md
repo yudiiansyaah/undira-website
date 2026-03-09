@@ -9,15 +9,15 @@ Halo semua! 👋 Ini adalah project open-source **Website Resmi Universitas Dian
 Berikut adalah beberapa tampilan website jika dijalankan di lokal:
 
 ### 🏠 Landing Page (Utama)
-![Landing Page](screenshots/landingPage)
+![Landing Page](screenshots/landingPage.png)
 > Akses di: `http://localhost:3001`
 
 ### 🔐 Login Admin
-![Login Admin](screenshots/loginAdmin)
+![Login Admin](screenshots/loginAdmin.png)
 > Akses di: `http://localhost:3001/admin/login`
 
 ### 📊 Dashboard Admin
-![Dashboard Admin](screenshots/dashboardAdmin)
+![Dashboard Admin](screenshots/dashboardAdmin.png)
 > Di sini kamu bisa kelola berita, pendaftaran mahasiswa, pesan masuk, dan data kampus.
 
 ---
